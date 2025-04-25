@@ -6,15 +6,23 @@
 
 ---
 
-## Table of Contents  
-1. [Motivation](#motivation)  
-2. [Project Goal](#project-goal)  
-3. [Data Sources and Preprocessing](#data-sources-and-preprocessing)  
-4. [Data Analysis](#data-analysis)  
-5. [Findings](#findings)  
-6. [Hypothesis Testing](#hypothesis-testing)  
-7. [Machine Learning Techniques](#machine-learning-techniques)  
-8. [Limitations and Future Work](#limitations-and-future-work)  
+### 1. Correlation Matrix  
+![Correlation Matrix](./Correlation%20Matrix-1.png)
+
+### 2. Price Change Over Time  
+![Price Change Over Time](./Price%20Change%20Over%20Time-1.png)
+
+### 3. Sales Change Over Time  
+![Sales Change Over Time](./Sales%20Change%20Over%20Time-1.png)
+
+### 4. Price vs Sales Volume  
+![Price vs Sales Volume](./Price%20vs%20Sales%20Volume.png)
+
+### 5. Visitor Traffic vs Sales Volume  
+![Visitor Traffic vs Sales Volume](./Visitor%20Traffic%20vs%20Sales%20Volume.png)
+
+### 6. Competitor Price vs Sales Volume  
+![Competitor Price vs Sales Volume](./Competitor%20Price%20vs%20Sales%20Volume.png)
 
 ---
 
