@@ -1,172 +1,193 @@
-E-Commerce Pricing Strategies and Their Impact on Sales
-Student: Mustafa Mervan Temel
-University: Sabancı University
-Course: DSA210, Spring 2025
+# E-Commerce Pricing Strategies and Their Impact on Sales  
 
-Hypotheses
-Hypothesis 1: Lower prices and promotional discounts significantly increase the daily sales volume compared to regular pricing periods.
+**Student:** Mustafa Mervan Temel  
+**University:** Sabancı University  
+**Course:** DSA210, Spring 2025  
 
-Hypothesis 2: Visitor traffic has a stronger and more consistent impact on sales volume than pricing or promotions.
+---
 
-Contents
-Motivation
+## Hypotheses  
 
-Project Goal
+1. **Hypothesis 1:** Lower prices and promotional discounts significantly increase daily sales volume compared to regular pricing periods.  
+2. **Hypothesis 2:** Visitor traffic has a stronger and more consistent impact on sales volume than pricing or promotions.  
 
-Data Sources and Preprocessing
+---
 
-Data Analysis
+## Contents  
+- Motivation  
+- Project Goal  
+- Data Sources and Preprocessing  
+- Data Analysis  
+- Findings  
+- Hypothesis Testing  
+- Machine Learning Techniques  
+- Limitations and Future Work  
 
-Findings
+---
 
-Hypothesis Testing
+## Motivation  
 
-Machine Learning Techniques
+Pricing in e-commerce is one of the most crucial tools that directly influence customer purchasing decisions. Running my store **Popizone** on **Trendyol**, I noticed that even small price adjustments or promotional events could lead to significant differences in daily sales. However, to truly understand which strategies work best, a systematic, data-driven approach is essential. This project applies data science principles to analyze how pricing, promotions, and visitor traffic affect sales outcomes, enabling me to make informed decisions to optimize revenue and customer engagement.
 
-Limitations and Future Work
+---
 
-Motivation
-In a highly competitive e-commerce landscape, especially on platforms like Trendyol, success is closely tied to dynamic and responsive pricing strategies. As the founder of the Popizone store, I observed fluctuations in daily sales patterns that seemed correlated to price changes, discount events, and traffic volume. However, without a data-driven approach, it was difficult to confirm the magnitude or nature of these relationships. This project seeks to uncover actionable insights that could guide future pricing decisions, ensuring not only higher revenue but also better customer retention and strategic market positioning. By applying concepts learned in DSA210, I aim to transition from intuitive pricing tactics to scientifically-backed strategies that scale.
+## Project Goal  
 
-Project Goal
-The main objective of this project is to rigorously analyze the relationship between pricing strategies and sales performance for products sold via my Trendyol store Popizone. Through detailed examination of price elasticity, promotional effectiveness, and traffic analysis, I intend to discover patterns that can be exploited to maximize revenue. Additionally, the project benchmarks internal pricing decisions against external competitor trends on platforms such as Etsy and Amazon, providing a holistic view of the competitive environment.
+To identify the most effective pricing strategies and understand how promotions and traffic volume impact sales in my Trendyol store **Popizone**. The goal is to find actionable insights that will guide future pricing, improve conversion rates, and enhance overall store performance.  
 
-Store Link: Popizone on Trendyol
+**Store Link:** [Popizone on Trendyol](https://www.trendyol.com/magaza/popizone-m-994801?sst=0)
 
-Data Sources and Preprocessing
-Data Sources
-Internal Popizone Store Data (Trendyol):
+---
 
-Daily Price (TL)
+## Data Sources and Preprocessing  
 
-Daily Sales Volume (units sold)
+### Data Sources  
+- **Popizone Store Data:**  
+  - Daily Price (TL)  
+  - Sales Volume (units/day)  
+  - Visitor Traffic (views/day)  
+  - Promotion Status (Yes/No)  
 
-Visitor Traffic (unique views per day)
+- **Competitor Pricing Data:**  
+  - Collected manually from Etsy and Amazon for similar products.
 
-Discount % (if applicable)
+### Preprocessing Steps  
+1. Converted `Date` column to datetime format.  
+2. Filled missing values in numeric columns with column means.  
+3. Encoded `Promotion Status` as binary values (Yes = 1, No = 0).  
+4. Rounded competitor prices for consistency in analysis.  
 
-Promotion Status (Yes/No)
+---
 
-Competitor Pricing Data:
+## Data Analysis Overview  
 
-Collected manually from Etsy and Amazon over a 30-day period.
+1. **Descriptive Statistics** for understanding the basic distribution of data.  
+2. **Correlation Matrix** to explore relationships between key variables.  
+3. **Time Series Trends** to visualize changes in price and sales over time.  
+4. **Scatter Plots** to investigate direct effects between variables.  
+5. **Elasticity Calculation** to measure price sensitivity.
 
-Focused on similar product categories for direct comparison.
+---
 
-Preprocessing
-Date Formatting: Standardized all dates using pd.to_datetime.
+## Findings  
 
-Missing Values: Handled missing entries in traffic and competitor data by filling with column mean values.
+### 1. Correlation Matrix  
+This heatmap reveals the strength of relationships between key variables.  
 
-Categorical Encoding: Promotion status encoded as binary for analysis (Yes=1, No=0).
+![Correlation Matrix](./Correlation%20Matrix-1.png)  
 
-Outlier Detection: Used IQR to detect and exclude anomalous traffic spikes likely due to Trendyol promotions not controlled by Popizone.
+- **Daily Price vs Sales Volume (r = –0.51):** Higher prices are moderately correlated with lower sales.  
+- **Visitor Traffic vs Sales Volume (r = +0.98):** More visitors lead directly to more sales.  
+- **Competitor Price vs Sales Volume (r ≈ 0):** Competitor prices have little effect.
 
-Normalization: Competitor prices rounded and normalized for clearer correlation analysis.
+---
 
-Data Analysis Overview
-Descriptive Statistics: Evaluated mean, median, and standard deviation of price, traffic, and sales.
+### 2. Price Change Over Time  
+This graph tracks the fluctuations in daily pricing.  
 
-Correlation Matrix: Identified pairwise relationships between key variables.
+![Price Change Over Time](./Price%20Change%20Over%20Time-1.png)  
 
-Time Series Analysis: Visualized how price and sales evolved over the month.
+- Price ranged between **TL 315** and **TL 350**.  
+- Lower prices aligned with higher sales peaks, especially around **TL 315**.
 
-Scatter Plots: Explored non-linear interactions between price, traffic, and sales.
+---
 
-Elasticity Measurement: Calculated price elasticity of demand to assess customer sensitivity.
+### 3. Sales Change Over Time  
+Daily sales volume visualized over the same period.  
 
-Findings
-1. Correlation Matrix
+![Sales Change Over Time](./Sales%20Change%20Over%20Time-1.png)  
 
-Daily Price vs Sales Volume (r = –0.51): Indicates a moderate negative correlation. Higher prices lead to reduced sales, confirming that Popizone’s market operates in a price-sensitive segment.
+- Sales varied from **3** to **10 units/day**.  
+- Higher sales days often coincided with promotional periods or price reductions.
 
-Visitor Traffic vs Sales Volume (r = +0.98): A very strong positive correlation, emphasizing that marketing efforts that drive traffic are highly effective in boosting sales.
+---
 
-Competitor Price vs Sales Volume (r ≈ 0.02): Shows negligible correlation, implying that short-term competitor pricing doesn’t significantly influence Popizone’s daily sales.
+### 4. Price vs Sales Volume  
+A scatter plot showing the inverse relationship between price and sales.  
 
-2. Price Change Over Time
+![Price vs Sales Volume](./Price%20vs%20Sales%20Volume.png)  
 
-Prices varied between TL 315 and TL 350 over the 30-day period.
+- Sales volume is highest when prices are **TL 315–330**.  
+- As price exceeds **TL 340**, sales drop to **3–5 units/day**.
 
-Notable drops in price aligned with increased sales activity, particularly during a TL 315 promotional period.
+---
 
-Price remained stable for multiple days at TL 340, resulting in consistent but lower sales.
+### 5. Visitor Traffic vs Sales Volume  
+Illustrates the strong impact of visitor traffic.  
 
-3. Sales Change Over Time
+![Visitor Traffic vs Sales Volume](./Visitor%20Traffic%20vs%20Sales%20Volume.png)  
 
-Sales peaked at 10 units/day during promotional pricing days.
+- Almost a perfect linear relationship: **+10 visitors ≈ +1 sale**.  
+- Indicates that driving traffic is as important as pricing.
 
-Non-promotional days saw a steady average of 4–5 units/day.
+---
 
-The sharpest increase in sales followed a sudden price drop and coincided with increased traffic.
+### 6. Competitor Price vs Sales Volume  
+Explores whether competitor pricing influences sales.  
 
-4. Price vs Sales Volume
+![Competitor Price vs Sales Volume](./Competitor%20Price%20vs%20Sales%20Volume.png)  
 
-Low Prices (≤ TL 330): Corresponded to 8–10 units/day.
+- No clear correlation found.  
+- Suggests that internal pricing decisions matter more than external competitor actions.
 
-Higher Prices (> TL 340): Limited sales to 3–5 units/day, reinforcing the idea of elastic demand in this market.
+---
 
-Clustered data points indicate that the optimal price range for maximum sales is around TL 315–330.
+## Hypothesis Testing  
 
-5. Visitor Traffic vs Sales Volume
+### Hypothesis 1: Promotional Pricing Increases Sales  
 
-Clear linear relationship: every 10 additional visitors yielded approximately 1 extra sale.
+- **T-Test:**  
+  - **T-Statistic:** 2.45  
+  - **P-Value:** 0.024  
 
-Outliers were identified where traffic increased but sales remained flat, likely due to higher prices during that period.
+**Conclusion:**  
+Promotional pricing significantly boosts sales. The null hypothesis is rejected.
 
-6. Competitor Price vs Sales Volume
+---
 
-No discernible pattern. Even when competitor prices dropped, Popizone sales remained unaffected.
+### Hypothesis 2: Traffic as a Strong Predictor  
 
-Suggests that Popizone’s customers are more influenced by internal factors (pricing, promotions, traffic) than by external competitor actions.
+- **Correlation:**  
+  - **r = 0.98**, **p < 0.001**  
 
-Hypothesis Testing
-Hypothesis 1: Price Reductions and Promotions Increase Sales
-T-Test Results:
+**Conclusion:**  
+Visitor traffic is the strongest predictor of sales performance. More targeted advertising could yield high returns.
 
-T-Statistic: 2.45
+---
 
-P-Value: 0.024
+## Machine Learning Techniques  
 
-Conclusion: Reject the null hypothesis. Promotional pricing has a statistically significant impact on increasing daily sales.
+### Multiple Linear Regression  
 
-Hypothesis 2: Visitor Traffic is the Strongest Predictor of Sales
-Pearson Correlation:
+- **Dependent Variable:** Sales Volume  
+- **Independent Variables:** Daily Price, Visitor Traffic, Promotion Status, Competitor Price  
+- **R² Score:** 0.91  
 
-r = 0.98, p < 0.001
+**Insights:**  
+- Visitor traffic has the highest influence, followed by price.  
+- Promotions have a positive but lesser effect.  
+- Competitor pricing is not significant.
 
-Conclusion: Traffic volume is an extremely strong predictor of sales. Prioritizing traffic-driving strategies such as social media marketing and Trendyol ads would yield better returns.
+---
 
-Machine Learning Techniques
-Multiple Linear Regression:
+### Price Elasticity of Demand  
 
-Dependent Variable: Sales Volume
+- **Elasticity = –1.2**  
+- **Interpretation:** Demand is elastic. Small price changes result in large variations in quantity sold.
 
-Independent Variables: Daily Price, Visitor Traffic, Competitor Price, Promotion Status
+---
 
-R² Score: 0.91
+## Limitations and Future Work  
 
-Model Insight: Traffic had the highest coefficient, followed by price. Competitor price was not a significant variable.
+### Limitations  
+- **Short Data Period:** 30 days limits seasonal trend analysis.  
+- **Manual Competitor Data:** Prone to human error.  
+- **External Influences:** Not all sales factors (e.g., reviews, platform promotions) are included.
 
-Price Elasticity of Demand:
+### Future Work  
+- Extend data collection for a **longer duration**.  
+- Use **web scraping** for more accurate competitor monitoring.  
+- Incorporate **sentiment analysis** on customer feedback.  
+- Implement **real-time A/B testing** for dynamic pricing.
 
-Elasticity = –1.2
-
-Interpretation: Demand is elastic; small changes in price cause larger percentage changes in quantity sold.
-
-Limitations and Future Work
-Limitations
-Data was collected over a 30-day period, limiting seasonal insights.
-
-Competitor price tracking was manual, introducing possible inconsistencies.
-
-The analysis excludes factors like customer reviews, product ratings, and platform-driven promotions.
-
-Future Work
-Extend data collection to 3–6 months for more robust trend analysis.
-
-Automate competitor price tracking using web scraping tools like BeautifulSoup or Selenium.
-
-Incorporate sentiment analysis from customer feedback.
-
-Conduct A/B testing with different pricing models and monitor live results.
+---
