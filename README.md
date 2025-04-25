@@ -12,7 +12,7 @@ In the highly competitive environment of e-commerce, pricing is not just a numbe
 
 This project is driven by my desire to move beyond intuition and leverage data science techniques to scientifically explore the relationship between pricing and sales performance. My aim is to uncover actionable insights that can enhance my decision-making process when setting prices, launching promotions, and responding to competitor strategies.
 
-By collecting and analyzing data from my store’s daily operations—spanning prices, sales volumes, visitor traffic, and competitor prices—I aim to identify patterns and correlations that are not immediately obvious. Furthermore, I want to benchmark my pricing strategies against major competitors on platforms like **Etsy** and **Amazon**, understanding how external market trends might influence my performance.
+By collecting and analyzing data from my store’s daily operations—spanning prices, sales volumes, visitor traffic, and competitor prices—I aim to identify patterns and correlations that are not immediately obvious. Furthermore, I want to benchmark my pricing strategies against major competitors on platform like **Trendyol**, understanding how external market trends might influence my performance.
 
 This project aligns with both my business goals and academic interests. It provides an opportunity to apply data analysis, statistical testing, and machine learning methods learned in **DSA210**, not only to deepen my technical skills but also to create tangible value for my store. In the long term, this study will serve as a foundation for more advanced pricing models and will support more efficient inventory management and promotional planning.
 
