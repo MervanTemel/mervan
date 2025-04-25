@@ -81,53 +81,91 @@ By achieving these goals, I aim to formulate an optimized pricing strategy that 
 ### 1. Correlation Matrix  
 ![Correlation Matrix](./Correlation%20Matrix-1.png)
 
-- **Daily Price vs Sales Volume (r = –0.51):** Moderate negative correlation—higher prices generally reduce sales.  
-- **Visitor Traffic vs Sales Volume (r = +0.98):** Very strong positive correlation—more visitors almost always mean more sales.  
+- **Null Hypothesis (H₀):** No correlation between pricing, visitor traffic, and sales volume.  
+- **Alternative Hypothesis (H₁):** Significant correlation exists.
+
+**Results:**  
+- **Daily Price vs Sales Volume:** r = –0.51  
+- **Visitor Traffic vs Sales Volume:** r = +0.98  
+- **Competitor Price vs Sales Volume:** r ≈ 0
+
+**Conclusion:**  
+Moderate negative correlation between price and sales, strong positive correlation between traffic and sales. Competitor pricing had negligible impact.
+
 
 ---
 
 ### 2. Price Change Over Time  
 ![Price Change Over Time](./Price%20Change%20Over%20Time-1.png)
 
-- Prices ranged between **TL 315** and **TL 350**.  
-- A notable price drop to **TL 315** corresponded with one of the highest sales days.  
-- Prices remained stable for several days, during which sales showed slight decline, indicating sensitivity to price stagnation.
 
----
+- **Null Hypothesis (H₀):** Price changes do not affect sales trends.  
+- **Alternative Hypothesis (H₁):** Price fluctuations impact sales.
+
+**Results:**  
+- Prices ranged between **TL 315** and **TL 350**.  
+- Lowest prices corresponded with high sales.
+
+**Conclusion:**  
+Strategic price drops to TL 315 boosted sales significantly.
+
 
 ### 3. Sales Change Over Time  
 ![Sales Change Over Time](./Sales%20Change%20Over%20Time-1.png)
 
-- Sales fluctuated between **3** and **10 units/day**.  
-- Peaks were observed after price reductions and promotional campaigns.  
-- Low sales days correlated with high price points and no active promotions.
+- **Null Hypothesis (H₀):** Sales remain constant over time.  
+- **Alternative Hypothesis (H₁):** Sales vary with time due to pricing/promotions.
+
+**Results:**  
+- Daily sales ranged from **3** to **10 units**.  
+- Sales peaked after price drops and during promotions.
+
+**Conclusion:**  
+Sales trends are directly tied to pricing and promotional events.
 
 ---
 
 ### 4. Price vs Sales Volume  
 ![Price vs Sales Volume](./Price%20vs%20Sales%20Volume.png)
 
-- **Low prices (≤ TL 330)** yield **8–10 units/day** sold.  
-- **High prices (≥ TL 350)** result in **3–5 units/day** sold.  
-- The scatter plot confirms the negative price elasticity, suggesting that lowering price increases sales within the observed range.
+- **Null Hypothesis (H₀):** Price has no effect on sales volume.  
+- **Alternative Hypothesis (H₁):** Lower prices lead to higher sales.
 
----
+**Results:**  
+- **TL ≤ 330:** **8–10 units/day** sold.  
+- **TL ≥ 350:** **3–5 units/day** sold.
+
+**Conclusion:**  
+There is an inverse relationship; lower prices result in significantly higher sales volumes.
+
 
 ### 5. Visitor Traffic vs Sales Volume  
 ![Visitor Traffic vs Sales Volume](./Visitor%20Traffic%20vs%20Sales%20Volume.png)
 
-- Nearly linear trend: every **10 additional visitors** led to approximately **1 more sale**.  
-- Sales did not occur in low traffic conditions, even when prices were reduced.  
-- Indicates the necessity of maintaining consistent traffic along with price adjustments.
+- **Null Hypothesis (H₀):** Visitor traffic has no impact on sales.  
+- **Alternative Hypothesis (H₁):** Higher traffic leads to more sales.
+
+**Results:**  
+- r = 0.98  
+- Every **10 additional visitors** resulted in **~1 extra sale**.
+
+**Conclusion:**  
+Traffic volume is the strongest predictor of sales.
 
 ---
 
 ### 6. Competitor Price vs Sales Volume  
 ![Competitor Price vs Sales Volume](./Competitor%20Price%20vs%20Sales%20Volume.png)
 
-- No clear pattern: competitor prices ranged widely without significantly affecting my sales.  
-- Suggests that my customers are more influenced by internal pricing and promotions than by competitor pricing.  
-- Reinforces the importance of focusing on direct customer engagement strategies.
+- **Null Hypothesis (H₀):** Competitor prices influence sales.  
+- **Alternative Hypothesis (H₁):** No significant influence.
+
+**Results:**  
+- No observable pattern.  
+- Sales unaffected by external pricing.
+
+**Conclusion:**  
+Short-term sales are independent of competitor pricing.
 
 ---
 
