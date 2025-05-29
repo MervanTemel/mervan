@@ -6,142 +6,190 @@
 
 ---
 
+## Project Overview
+
+This project explores how pricing, visitor traffic, and promotional strategies affect sales volume in an e-commerce setting. The data was collected from my own online store, **Popizone**, operating on Trendyol. By combining domain experience and data science techniques, the goal is to evaluate the impact of various business decisions and develop predictive models to support future pricing strategies.
+
+---
+
 ## Motivation
 
-In the highly competitive environment of e-commerce, pricing is not just a number—it is a strategic tool that directly influences customer behavior, sales volume, and ultimately, business profitability.
+### Business Growth
 
-Having managed my own online store, **Popizone**, on Trendyol, I noticed fluctuations in daily sales due to even small pricing or promotional changes. This project aims to move beyond anecdotal evidence and provide a **data-driven analysis** of sales behavior influenced by pricing, promotions, and traffic.
+- In e-commerce, small changes in pricing or promotion can lead to major shifts in sales.
+- I wanted to quantify these effects using real business data from Popizone.
 
----
+### Academic Development
 
-## Project Goal
-
-To quantify and analyze how changes in price, promotions, and visitor traffic influence the sales performance of the **Popizone** online store.
-
-### Key Objectives:
-- Determine the impact of pricing and promotions on sales  
-- Benchmark against competitors  
-- Develop predictive models for sales volume  
+- The project allowed me to apply core concepts from **DSA210**, such as correlation analysis, hypothesis testing, and machine learning.
+- It served as a hands-on bridge between theoretical knowledge and real-life business optimization.
 
 ---
 
-## Data Sources & Preprocessing
+## Objectives
 
-- **Daily Price (TL)**  
-- **Sales Volume (units/day)**  
-- **Visitor Traffic (views/day)**  
-- **Promotion Status (Yes/No)**  
-- **Competitor Price (TL)**
-
-### Preprocessing Steps:
-1. Converted `Date` to datetime  
-2. Filled missing values with column means  
-3. Encoded `Promotion Status` (Yes → 1, No → 0)  
-4. Rounded competitor prices to integers  
+- Determine the correlation between pricing and sales performance.
+- Evaluate the effect of visitor traffic and promotional activity.
+- Identify key predictors of daily sales volume.
+- Use regression and tree-based models to forecast sales.
+- Compare results across different modeling techniques.
 
 ---
 
-## Exploratory Analysis & Findings
+## Data Sources
+
+- **Daily Price (TL):** Price of the product on a given day.
+- **Sales Volume:** Number of units sold.
+- **Visitor Traffic:** Number of visitors to the product page.
+- **Promotion Status:** Whether the product was in a promotion (Yes/No).
+- **Competitor Price:** Manually tracked competitor pricing.
+
+---
+
+## Analysis Plan
+
+- Correlation analysis and statistical testing.
+- Time-series visualization of prices and sales.
+- Evaluation of promotional effects.
+- Regression modeling (linear and tree-based).
+- Feature importance analysis.
+
+---
+
+## Expected Outcomes
+
+- Understand how different pricing strategies affect sales.
+- Discover patterns between traffic and conversion.
+- Determine the effectiveness of promotional events.
+- Build models to support pricing decisions based on real data.
+
+---
+
+## Findings
 
 ### 1. Correlation Matrix  
-![Correlation Matrix](Correlation%20Matrix-1.png)  
-**Visitor traffic** has a very strong positive correlation with sales (r = 0.98), while price has a moderate negative impact (r = -0.51).  
-Competitor price appears uncorrelated with sales in this short-term dataset.
+![Correlation Matrix](Correlation%20Matrix-1.png)
+
+- **Visitor Traffic** has a very strong positive correlation with sales volume (**r = 0.98**).
+- **Daily Price** is moderately negatively correlated (**r = -0.51**).
+- **Competitor Price** showed no meaningful correlation.
+
+**Insight:** Visitor traffic is the most significant driver of sales. Lower prices are associated with higher sales.
 
 ---
 
 ### 2. Price Change Over Time  
-![Price Change Over Time](Price%20Change%20Over%20Time-1.png)  
-As price dropped around day 15, a surge in sales occurred. This confirms customer **price sensitivity**, particularly near TL 315–320.
+![Price Change Over Time](Price%20Change%20Over%20Time-1.png)
+
+**Insight:** Strategic discounts (e.g., dropping from TL 350 to TL 315) directly corresponded with an increase in units sold.
 
 ---
 
 ### 3. Sales Change Over Time  
-![Sales Change Over Time](Sales%20Change%20Over%20Time-1.png)  
-Promotional periods and lower price ranges correlate with spikes in sales volume. Sales were highest when discounts were active.
+![Sales Change Over Time](Sales%20Change%20Over%20Time-1.png)
+
+**Insight:** Peaks in sales align with promotional days and lower price points.
 
 ---
 
 ### 4. Price vs Sales Volume  
-![Price vs Sales Volume](Price%20vs%20Sales%20Volume.png)  
-Sales volume decreases as prices rise. Highest volumes (8–10 units/day) were seen at TL ≤ 330.
+![Price vs Sales Volume](Price%20vs%20Sales%20Volume.png)
+
+**Insight:** There is a clear inverse relationship—sales decline as price increases.
 
 ---
 
 ### 5. Visitor Traffic vs Sales Volume  
-![Visitor Traffic vs Sales Volume](Visitor%20Traffic%20vs%20Sales%20Volume.png)  
-This plot confirms the **direct and strong linear relationship** between store visits and sales.  
+![Visitor Traffic vs Sales Volume](Visitor%20Traffic%20vs%20Sales%20Volume.png)
 
-> Every 10 additional visitors yield approximately 1 extra sale.
+**Insight:** This is a nearly linear relationship. For every 10 additional visitors, sales increased by roughly 1 unit.
 
 ---
 
 ### 6. Competitor Price vs Sales Volume  
-![Competitor Price vs Sales Volume](Competitor%20Price%20vs%20Sales%20Volume.png)  
-Competitor pricing appears to have **no short-term impact** on daily sales. Customer decisions were likely more influenced by internal store factors.
+![Competitor Price vs Sales Volume](Competitor%20Price%20vs%20Sales%20Volume.png)
+
+**Insight:** Competitor price does not appear to impact Popizone’s short-term sales.
 
 ---
 
 ## Hypothesis Testing
 
-**Null Hypothesis (H₀):** Price changes have no effect on sales volume  
-**Alternative Hypothesis (H₁):** Lower prices lead to higher sales
+### Hypothesis: Lower product prices increase sales volume.
 
-- **T-statistic:** –2.84  
-- **P-value:** 0.01  
+- **Null Hypothesis (H₀):** Price changes have no effect on sales.
+- **Alternative Hypothesis (H₁):** Lower prices lead to higher sales.
 
-✅ **Result:** Reject H₀ → Lower prices **significantly** increase sales
+**T-Statistic:** –2.84  
+**P-Value:** 0.01 ✅  
+**Conclusion:** Reject H₀ → Lower prices significantly increase sales volume.
 
 ---
 
 ## Machine Learning Models
 
-### 🔹 Model 1: Linear Regression (Daily Price → Sales Volume)  
-![Model 1](Model%201%20-%20ML.png)  
-- **R² Score:** 0.35  
-- **MAE:** ~1.9  
+### Model 1: Linear Regression (Price → Sales Volume)  
+![Model 1](Model%201%20-%20ML.png)
 
-📌 **Interpretation:** Price alone is a weak predictor. The model captures the general trend but has high residual error, suggesting that **price should not be modeled in isolation**.
+- **R²:** 0.35  
+- **MAE:** 1.9  
 
----
-
-### 🔹 Model 2: Linear Regression (Visitor Traffic → Sales Volume)  
-![Model 2](Model%202%20-%20ML.png)  
-- **R² Score:** 0.87  
-- **MAE:** ~1.2  
-
-📌 **Interpretation:** This model demonstrates that **traffic volume is a reliable and strong predictor** of sales. High R² indicates that most variance in sales can be explained by traffic.
+**Interpretation:** Price has a moderate inverse relationship with sales, but other variables are needed for stronger predictions.
 
 ---
 
-### 🔹 Model 3: Decision Tree (Price + Traffic → Sales Volume)  
-![Model 3](Model%203%20-%20ML.png)  
-- **R² Score:** 0.91  
-- **MAE:** ~0.8  
+### Model 2: Linear Regression (Traffic → Sales Volume)  
+![Model 2](Model%202%20-%20ML.png)
 
-📌 **Interpretation:** A decision tree using both price and traffic captures **nonlinear interactions** better than linear models. This model performs well and reduces error significantly.
+- **R²:** 0.87  
+- **MAE:** 1.2  
 
----
-
-### 🔹 Model 4: Decision Tree (All Features)  
-![Model 4](Model%204%20-%20ML.png)  
-- **R² Score:** 0.92  
-- **MAE:** ~0.7  
-
-📌 **Interpretation:** Incorporating all features—including promotion and competitor prices—slightly improves accuracy. However, **competitor pricing has minimal importance**.
+**Interpretation:** Visitor traffic is a powerful standalone predictor of sales. The model captures 87% of variance.
 
 ---
 
-## Feature Importance – Decision Tree Model  
+### Model 3: Decision Tree (Price + Traffic → Sales Volume)  
+![Model 3](Model%203%20-%20ML.png)
+
+- **R²:** 0.91  
+- **MAE:** 0.8  
+
+**Interpretation:** Combining price and traffic improves performance. The tree model handles interactions between features better.
+
+---
+
+### Model 4: Decision Tree (All Features → Sales Volume)  
+![Model 4](Model%204%20-%20ML.png)
+
+- **R²:** 0.92  
+- **MAE:** 0.7  
+
+**Interpretation:** Adding promotion and competitor prices gives minimal gain. Most of the performance still comes from internal metrics.
+
+---
+
+## Feature Importance: Decision Tree  
 ![Decision Tree](Decision%20Tree.png)
 
-### Ranked Importance:
-1. **Visitor Traffic** – Most critical variable  
-2. **Daily Price** – High impact  
-3. **Promotion Status** – Moderate effect  
-4. **Competitor Price** – Negligible contribution  
+**Top Predictors:**
 
-🧠 **Conclusion:** Internal store factors (traffic, pricing) drive performance more than external competitor behavior.
+1. **Visitor Traffic** — strongest driver of sales  
+2. **Daily Price** — secondary impact  
+3. **Promotion Status** — mild contribution  
+4. **Competitor Price** — negligible impact
+
+**Conclusion:** Internal store decisions outweigh external pricing competition in the short term.
+
+---
+
+## Comparison Table
+
+| Model                      | R²    | MAE  |
+|---------------------------|-------|------|
+| Price Only (Linear)       | 0.35  | 1.9  |
+| Traffic Only (Linear)     | 0.87  | 1.2  |
+| Decision Tree (2 vars)    | 0.91  | 0.8  |
+| Decision Tree (All vars)  | 0.92  | 0.7  |
 
 ---
 
@@ -149,27 +197,27 @@ Competitor pricing appears to have **no short-term impact** on daily sales. Cust
 
 ### Limitations:
 - Only 30 days of data  
-- Manual competitor price tracking  
-- No distinction between ad and organic traffic  
-- Limited generalization power of short-term models
+- Competitor price was manually collected  
+- No data on advertising or conversion rates  
+- Traffic sources (organic vs. ad) not differentiated
 
-### Future Enhancements:
-- Extend dataset over multiple months for seasonality analysis  
-- Use advanced models like Random Forest or XGBoost  
-- Automate data extraction and tracking tools  
-- Integrate conversion rate and advertising spend metrics
+### Future Plans:
+- Automate competitor price collection  
+- Track ad spend and conversion metrics  
+- Build ensemble models with longer-term data  
+- Apply time-series forecasting techniques (e.g., ARIMA)
 
 ---
 
-## Final Conclusion
+## Conclusion
 
-- 📉 **Lower Prices → Higher Sales**  
-- 📈 **Traffic = Strongest Predictor**  
-- 🛍️ **Promotions Help, But Need Margin Control**  
-- 🤖 **Decision Tree Model (Model 4) performs best (R² = 0.92)**  
-- ❌ **Competitor Prices = Little Immediate Impact**
+- 📊 **Visitor traffic is the strongest sales driver**  
+- 📉 **Lower prices result in significantly higher sales**  
+- 🛍️ **Promotions help—but depend on timing and pricing**  
+- ❌ **Competitor prices had no immediate effect**  
+- 🧠 **Model 4 (Decision Tree - All Features) performed best (R² = 0.92)**
 
-This study enabled me to transform personal business intuition into measurable, actionable insight. With statistical tools and machine learning, I developed a scalable approach to pricing optimization for **Popizone**.
+This project helped me combine real-world business data with academic tools from DSA210. I now have a data-backed approach to pricing and marketing in e-commerce.
 
 ---
 
@@ -177,18 +225,10 @@ This study enabled me to transform personal business intuition into measurable, 
 
 This project was completed independently by myself. However, OpenAI’s ChatGPT (GPT-4) was used in the following areas to support the process:
 
-- ChatGPT assisted in improving the grammar, sentence structure, and clarity of the README file. All written content ideas and interpretations were originally created by me and verified with AI assistance.
+- Assisted in improving grammar, sentence structure, and clarity of the README file.
+- Provided guidance on GitHub usage, such as uploading files and embedding images.
+- Supported interpretation of regression outputs and plotting in the Jupyter Notebook.
 
-- Since I didn't know how to use GitHub at first, guidance was received on:
-  - How to upload files  
-  - Embed images into the README  
-  - Structure the repository content clearly
-
-- During the preparation of the Jupyter Notebook, ChatGPT also helped with:
-  - Data visualization  
-  - Interpreting regression and decision tree outputs  
-  - Summarizing findings into coherent explanations
-
-All AI-generated suggestions were critically reviewed, revised, and finalized to ensure originality and academic integrity.
+All content was reviewed and finalized by me to ensure originality and accuracy.
 
 ---
