@@ -1,6 +1,6 @@
 # E-Commerce Pricing Strategies and Their Impact on Sales
 
-**Student:** Mustafa Mervan Temel  
+**Student:** Mustafa Mervan Temel, 32539  
 **University:** Sabancı University  
 **Course:** DSA210, Spring 2025  
 
